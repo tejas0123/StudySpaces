@@ -9,7 +9,7 @@ function Navbar() {
       <a href=''>Home</a>
       <a href=''>Write an article</a>
       <a href=''>Latest</a>
-      <a role='button' href = "" className='loginbtn'>Sign In</a>
+      <a role='button' href = "/signin" className='loginbtn'>Sign In</a>
       </div>
       
     </StyledNavbar>
