@@ -21,7 +21,7 @@ box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
     justify-content: space-between;
 }
 img{
-    width: 600px;
-    height:500px;   
+    width: 100%;
+    height:100%;   
 }
 `

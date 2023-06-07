@@ -5,6 +5,7 @@ import SignUp from './components/Signup';
 import { BrowserRouter, Routes, Link, Route}from 'react-router-dom'
 import { useNavigate } from 'react-router';
 import Navbar from './components/Navbar';
+import Spaces from './components/Spaces';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path = '/' element = {<Home/>} />
           <Route path = '/signin' element = {<><LoginPopup/></>}/>
           <Route path = '/createaccount' element = {<><SignUp/></>}/>
+          <Route path = '/mySpaces' element = {<Spaces/>} />
       </Routes>
      </main>
     </BrowserRouter>
