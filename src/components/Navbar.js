@@ -45,7 +45,7 @@ function Navbar(){
       <h1>StudySpaces</h1>
       <div>
       <a href='/'>Home</a>
-      <a href=''>My Spaces</a>
+      <a href='/myspaces'>My Spaces</a>
       <a href=''>Task Stack</a>
       <a role = 'button' href = {href} className='loginbtn' onClick={logout}>{btnText}</a>
       </div>
