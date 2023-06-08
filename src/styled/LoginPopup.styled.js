@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledPopup = styled.div
 `
 *{
-    font-family:arial;
+    font-family: 'Poppins'
 }
 margin-top:20px;
 h1{
@@ -19,7 +19,7 @@ display:flex;
 flex-direction:column;
 width:330px;
 height:auto;
-background-color:#21262d;
+background-color:#003400;
 color:white;
 margin-right:auto;
 margin-left:auto;
@@ -35,8 +35,7 @@ border-radius:15px;
     width:320px;
     border-radius:10px;
     height:40px;
-    background-color:#121212;
-    color:white;
+    background-color:#ccff90;
 }
 
 .formelements button{
