@@ -17,7 +17,7 @@ function Navbar(props) {
    useEffect(() => {
     loginStatus = localStorage.getItem("isLoggedIn");
     
-    if (isLoggedIn || loginStatus!="false") {
+    if (isLoggedIn || loginStatus == "true") {
       console.log(loginStatus);
       axios.defaults.withCredentials = true;
       axios.get("http://localhost:4000/login")

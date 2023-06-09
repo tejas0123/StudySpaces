@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const app = express();
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const UserRouter = require('./Routes/UserRoutes.js');
+const User = require('./Schemas/UsersSchema.js')
 
 app.use(express.json());
 app.use(cors({
@@ -44,33 +46,7 @@ mongoose
     .catch((err) => console.log(err));
 
 
-    //creating a schema
-const userSchema = new mongoose.Schema({
-   firstname:{
-    type: String,
-    required: true
-   },
-   lastname:{
-    type: String,
-    required: true
-   },
-   email:{
-    type: String,
-    required: true,
-    unique: true
-   },
-   password:{
-    type: String,
-    required:true
-   },
-   session:{
-    type: Object
-   }
-});
-
-//creating a collection
-const User = mongoose.model("user", userSchema);
-
+app.use(UserRouter);
 
 app.get("/", (req, res) =>{
     res.send("HEllo worLd");

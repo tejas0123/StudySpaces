@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import { StyledSpace } from '../styled/Spaces.styled'
 import { useState } from 'react'
 import { StyledPopup } from '../styled/LoginPopup.styled'
+import axios from 'axios'
 
 function Spaces() {
   const [visibility, setVisibility] = useState('hidden');
@@ -12,7 +13,21 @@ function Spaces() {
   const [desc, setDesc] = useState('');
   const [code, setCode] = useState('');
   const [zindex, setZindex] = useState(-1);
+
+
+  async function submit(e)
+  {
+    axios.post("http://localhost:4000/newSpace", {name, creator, subject, code, desc})
+    .then(res=>{
+      console.log("hi");
+      console.log(res);
+    })
+    .catch(err=>{
+      console.log(err);
+    });
+  }
   
+
   if (visibility == 'visible') {
     return (
       <>
@@ -48,7 +63,7 @@ function Spaces() {
               </div>
               <br />
               <div style={{ "margin-left": "auto", "margin-right": "auto" }}>
-                <button className="createButton" type='submit'>Create</button>
+                <button className="createButton" type='submit' onClick={submit}>Create</button>
                 <button className="createButton" onClick={() => setVisibility("hidden")}>Close</button>
               </div>
 
