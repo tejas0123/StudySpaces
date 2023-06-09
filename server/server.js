@@ -166,11 +166,13 @@ app.get("/logout", (req, res) =>{
         
             req.session.user = null;
             req.session.username = null;
-            console.log("Session cleared");
-            res.clearCookie("user_sid");
-            console.log("User logged out");
-            return res.json({cleared : true});
-        
+            req.session.destroy((err)=>{
+                console.log("Session cleared");
+                res.clearCookie("StudySpaces");
+                console.log("User logged out");
+                return res.json({cleared : true});
+            });
+            
     })
     .catch(err=>{
         console.log(err);

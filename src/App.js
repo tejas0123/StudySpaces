@@ -5,25 +5,27 @@ import SignUp from './components/Signup';
 import { BrowserRouter, Routes, Link, Route}from 'react-router-dom'
 import Spaces from './components/Spaces';
 import { useContext ,createContext,useState} from 'react';
-import context from './UseContext';
+import {context} from './UseContext.js';
 
 function App() {
- const UseContext = createContext(context);
- const [isLoggedIn,setLogin] = useState(false); 
+ 
+ const [isLoggedIn,setLogin] = useState(false);
+ console.log(isLoggedIn); 
+
   return (
     <>
    
     <BrowserRouter>
-     <main>
-     {/* <UseContext.Provider value={[isLoggedIn,setLogin]}> */}
+     {/* <main> */}
+     <context.Provider value={[isLoggedIn,setLogin]}>
         <Routes>
           <Route path = '/' element = {<Home/>} />
           <Route path = '/signin' element = {<><LoginPopup/></>}/>
           <Route path = '/createaccount' element = {<><SignUp/></>}/>
           <Route path = '/mySpaces' element = {<Spaces/>} />
        </Routes>
-       {/* </UseContext.Provider> */}
-     </main>
+       </context.Provider>
+     {/* </main> */}
     </BrowserRouter>
     
     </>
