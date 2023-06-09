@@ -19,7 +19,7 @@ display:flex;
 flex-direction:column;
 width:330px;
 height:auto;
-background-color:#003400;
+background-color:#121212;
 color:white;
 margin-right:auto;
 margin-left:auto;

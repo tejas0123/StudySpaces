@@ -16,11 +16,11 @@ app.use(cors({
 }));
 
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(session({
-    key: "user_sid",
+    key: "StudySpaces",
     secret : "AuthenticationUsingSessionsAndCookies",
     cookie :{
         expires:600000
@@ -117,8 +117,18 @@ app.post("/login", (req, res) =>{
             if(isMatch){
                 req.session.user = req.body.email;
                 req.session.username = result.firstname;
-                console.log(req.session);
-                return res.json({valid: true, user : req.session.user, username:result.firstname});
+                const session = {
+                    user : req.session.user,
+                    username : req.session.username
+                }
+                User.findOneAndUpdate({email : req.session.user}, {session:session})
+                .then(result=>{
+                    console.log(req.session);
+                    return res.json({valid: true, user : req.session.user, username:result.firstname});
+                })
+                .catch(err=>{
+                    console.log(err);
+                });
             }
             else{
                 return res.json({valid: false, user: null});
@@ -130,9 +140,17 @@ app.post("/login", (req, res) =>{
 
 app.get("/login", (req, res) =>{
     // console.log(req.session);
+
     if(req.session.user){
+        
         console.log(req.session.user);
-        return res.json({valid: true, user: req.session.user, username: req.session.username});
+        User.findOne({email : req.session.user})
+        .then(result=>{
+            const userEmail = result.session.user;
+            const userName = result.session.username;
+            return res.json({valid: true, user: userEmail, username: userName});
+        })
+        
     }
     else{
         return res.json({valid: false, user: null});
@@ -142,9 +160,22 @@ app.get("/login", (req, res) =>{
 
 
 app.get("/logout", (req, res) =>{
-    res.clearCookie("user_sid");
-    console.log("User logged out");
-    return res.json({cleared : true});
+    User.findOneAndUpdate({email : req.session.user}, {session:{user:null, username:null}
+    })
+    .then((err)=>{
+        
+            req.session.user = null;
+            req.session.username = null;
+            console.log("Session cleared");
+            res.clearCookie("user_sid");
+            console.log("User logged out");
+            return res.json({cleared : true});
+        
+    })
+    .catch(err=>{
+        console.log(err);
+    });
+    
 });
 
 app.listen(4000, () =>{

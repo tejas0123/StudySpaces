@@ -1,6 +1,10 @@
 import React from 'react'
 import { StyledHomePage } from '../styled/Home.styled'
 import Navbar from './Navbar'
+import axios from 'axios';
+import { useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
+
 function Home() {
   return (
     <>

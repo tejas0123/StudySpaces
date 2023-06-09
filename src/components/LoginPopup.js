@@ -1,15 +1,16 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { StyledPopup } from '../styled/LoginPopup.styled';
+import context from '../UseContext';
 
 function LoginPopup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorText, setErrorText] = useState('');
   const navigate = useNavigate();
-  
+  // const [isLoggedIn,setLogin] = useContext(context);
   async function submit(e){
     e.preventDefault();
     if(email == '' || password == ''){
@@ -21,9 +22,11 @@ function LoginPopup() {
         axios.defaults.withCredentials = true;
         axios.post("http://localhost:4000/login", {email, password})
         .then(res =>{
+          // setLogin(true);
           console.log(res);
           if(res.data.valid){
-            sessionStorage.setItem("sessionUser", res.data.username);
+
+            // sessionStorage.setItem("sessionUser", res.data.username);
             navigate('/');
           }
           else{
@@ -56,7 +59,7 @@ function LoginPopup() {
                 <br/>
                 <input type='password' name='password' placeholder='Password' onChange={(e) => {setPassword(e.target.value)}}></input>
             </div>
-            <div className='formelements'><button type='submit'>Sign in</button></div>
+            <div className='formelements'><button type='submit' onClick={submit}>Sign in</button></div>
             <a href=''>Forgot Password?</a>
         </div>
       </form>
