@@ -1,10 +1,8 @@
 import React from 'react'
 import { useState,useContext } from 'react';
-import { useState, useContext} from 'react';
 import axios from 'axios';
 import { StyledPopup } from '../styled/LoginPopup.styled';
 import { useNavigate } from 'react-router';
-import { context } from '../UseContext.js';
 import {context} from '../UseContext';
 
 function Signup() {
@@ -38,7 +36,7 @@ function Signup() {
         .then(res =>{
           console.log(res);
           setLogin(true);
-          localStorage.setItem('isLoggedIn', "true");
+          localStorage.setItem("isLoggedIn", "true");
           navigate('/');
         })
         .catch(err => console.log(err));
