@@ -1,8 +1,10 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import axios from 'axios';
 import { StyledPopup } from '../styled/LoginPopup.styled';
 import { useNavigate } from 'react-router';
+import {context} from '../UseContext';
+
 function Signup() {
 
   const [email, setEmail] = useState('');
@@ -11,6 +13,7 @@ function Signup() {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [errorText, setErrorText] = useState('');
+  const [isLoggedIn, setLogin] = useContext(context);
   const navigate = useNavigate();
 
   async function submit(e){
@@ -30,7 +33,8 @@ function Signup() {
         })
         .then(res =>{
           console.log(res);
-          sessionStorage.setItem("userSession", res.data.username);
+          setLogin(true);
+          localStorage.setItem('isLoggedIn', "true");
           navigate('/');
         })
         .catch(err => console.log(err));

@@ -63,7 +63,7 @@ function Navbar(props) {
       axios.get("http://localhost:4000/logout") //api call to clear the cookie on the server
         .then(res => {
           console.log(res);
-          localStorage.setItem("isLoggedIn", false);
+          localStorage.setItem("isLoggedIn", "false");
           setLogin(false);
           navigate('/');
         });
