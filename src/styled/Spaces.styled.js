@@ -73,7 +73,8 @@ font-family: 'Poppins';
 }
 
 .card:hover{
-    box-shadow: 0 4px 4px black
+    box-shadow: 0 4px 4px black;
+    cursor: pointer;
 }
 
 h2{

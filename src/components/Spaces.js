@@ -4,7 +4,9 @@ import { StyledSpace } from "../styled/Spaces.styled";
 import { useState } from "react";
 import { StyledPopup } from "../styled/LoginPopup.styled";
 import axios from "axios";
+import { useNavigate } from 'react-router';
 import { context } from "../UseContext";
+import { Navigate } from "react-router";
 
 function Spaces() {
   const [visibility, setVisibility] = useState("hidden");
@@ -19,7 +21,7 @@ function Spaces() {
   const [createdSpace, setCreatedSpace] = useState([]);
   const [joinedSpace, setjoinedSpace] = useState([]);
   const [isLoggedIn, setLogin] = useContext(context);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
       axios.defaults.withCredentials = true;
@@ -66,6 +68,12 @@ function Spaces() {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+
+  const displaySpace = (id) => {
+    console.log(id);
+    navigate(`/spaceinfo?id=${id}`);
   }
 
   //create class form
@@ -284,9 +292,9 @@ function Spaces() {
           <div className="container">
             {createdSpace.map((item) => {
               return (
-                <div className="card">
+                <div className="card" onClick={()=>displaySpace(item._id)}>
                   <h2>{item.name}</h2>
-                  <div className="card-element">
+                  <div className="card-element" >
                     <img
                       src={require("../images/teacher.png")}
                       width="40px"
