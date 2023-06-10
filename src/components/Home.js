@@ -1,7 +1,12 @@
 import React from 'react'
 import { StyledHomePage } from '../styled/Home.styled'
 import Navbar from './Navbar'
-function Home() {
+import axios from 'axios';
+import { useNavigate } from 'react-router';
+import { useState, useEffect, useContext} from 'react';
+import { context } from '../UseContext.js';
+
+function Home() {  
   return (
     <>
     <Navbar></Navbar>

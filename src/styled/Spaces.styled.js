@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-
 export const StyledSpace = styled.div`
+font-family: 'Poppins';
 .button{
     margin:5px;
     background-color:green;
@@ -62,5 +62,49 @@ export const StyledSpace = styled.div`
     cursor:pointer;
 }
 
+.card {
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #003400;
+    color: white;
+    // font-family: 'Poppins';
+}
+
+.card:hover{
+    box-shadow: 0 4px 4px black
+}
+
+h2{
+    padding :10px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-top: 20px;
+}
+.card-element{
+    display:flex;
+    align-items: center;
+}
+.card-element img{
+    margin:10px;
+}
+
+.code{
+    display: flex;
+    align-items: left;
+    margin: 10px;
+}
+
+.desc{
+    margin-left: 10px;
+    text-align: justify;
+}
 
 `
