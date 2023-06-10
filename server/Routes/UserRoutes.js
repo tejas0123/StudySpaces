@@ -7,6 +7,8 @@ Router.get('/fetchAllSpaces', async(req,res)=>{
     let joined = [];
     let created = [];
     let user = await User.findOne({email : req.session.user});
+    console.log(user);
+    
     joined = user.joined;
     created = user.created;
     const allSpaces = await Spaces.find();
