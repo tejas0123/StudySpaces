@@ -41,7 +41,7 @@ app.use(session({
 
 //connecting to MongoDB
 mongoose
-    .connect('mongodb://127.0.0.1:27017/StudySpaces')
+    .connect('mongodb+srv://vishnushedole09:VishnuShedole@cluster0.ezy6iil.mongodb.net/StudySpaces?retryWrites=true&w=majority')
     .then(() => console.log("database connected"))
     .catch((err) => console.log(err));
 
@@ -54,7 +54,7 @@ app.get("/", (req, res) =>{
 
 
 app.post("/signup", (req, res) =>{
-    const{firstname, lastname, email, password} = req.body;
+    const{firstname, lastname, email, password,joined,created} = req.body;
             //hashing the password
            bcrypt.hash(password, saltRounds, (err, hash) =>{
             if(err){
@@ -73,7 +73,9 @@ app.post("/signup", (req, res) =>{
                     lastname : lastname,
                     email : email,
                     password : hashedPW,
-                    session : session
+                    session : session,
+                    joined : joined,
+                    created :created
                 };
                 console.log(userData);
                 User.insertMany(userData);

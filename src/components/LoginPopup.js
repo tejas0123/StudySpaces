@@ -24,7 +24,11 @@ function LoginPopup() {
         axios.post("http://localhost:4000/login", {email, password})
         .then(res =>{
           setLogin(true);
+<<<<<<< HEAD
           localStorage.setItem('isLoggedIn', "true");
+=======
+          localStorage.setItem('isLoggedIn', 'true');
+>>>>>>> 47d1ffde17f9925c47a2701885d9fc151d711c91
           console.log(res);
           if(res.data.valid){
             navigate('/');

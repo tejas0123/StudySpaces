@@ -1,12 +1,14 @@
 import React from 'react'
+import { useState,useContext } from 'react';
 import { useState, useContext} from 'react';
 import axios from 'axios';
 import { StyledPopup } from '../styled/LoginPopup.styled';
 import { useNavigate } from 'react-router';
+import { context } from '../UseContext.js';
 import {context} from '../UseContext';
 
 function Signup() {
-
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -27,9 +29,11 @@ function Signup() {
     else{
       try{
         setErrorText('');
+        let joined = [];
+        let created = [];
         axios.defaults.withCredentials = true;
         await axios.post("http://localhost:4000/signup",{
-          firstname, lastname, email, password
+          firstname, lastname, email, password,joined,created
         })
         .then(res =>{
           console.log(res);

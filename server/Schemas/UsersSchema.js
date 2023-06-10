@@ -20,6 +20,12 @@ const userSchema = new mongoose.Schema({
     },
     session:{
      type: Object
+    },
+    joined:{
+        type:[String]
+    },
+    created:{
+        type:[String]
     }
  });
 

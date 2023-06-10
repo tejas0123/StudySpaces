@@ -20,6 +20,10 @@ const SpacesSchema = new mongoose.Schema({
     desc:{
         type: String,
         required:true
+    },
+    students:{
+        type:[String],
+        required:true
     }
  });
  //creating a collection

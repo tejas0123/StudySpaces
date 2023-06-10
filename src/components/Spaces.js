@@ -17,7 +17,8 @@ function Spaces() {
 
   async function submit(e)
   {
-    axios.post("http://localhost:4000/newSpace", {name, creator, subject, code, desc})
+    let students = [];
+    axios.post("http://localhost:4000/newSpace", {name, creator, subject, code, desc,students})
     .then(res=>{
       console.log("hi");
       console.log(res);
