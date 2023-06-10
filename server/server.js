@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const UserRouter = require('./Routes/UserRoutes.js');
 const User = require('./Schemas/UsersSchema.js')
+const Spaces = require('./Schemas/SpacesSchema.js')
 
 app.use(express.json());
 app.use(cors({
@@ -157,6 +158,7 @@ app.get("/logout", (req, res) =>{
     });
     
 });
+
 
 app.listen(4000, () =>{
     console.log("server started in port 4000");

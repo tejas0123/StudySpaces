@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './Navbar'
 import { StyledSpace } from '../styled/Spaces.styled'
 import { useState } from 'react'
@@ -13,8 +13,16 @@ function Spaces() {
   const [desc, setDesc] = useState('');
   const [code, setCode] = useState('');
   const [zindex, setZindex] = useState(-1);
+  const [classCode, setclassCode] = useState('');
+  const [joinFormVisibility, setJoinFormVisibility] = useState('');
 
-
+  useEffect()
+  {
+    axios.get("http://localhost:4000/fetchAllSpaces")
+    .then(res=>{
+      
+    })
+  }
   async function submit(e)
   {
     let students = [];
@@ -27,8 +35,19 @@ function Spaces() {
       console.log(err);
     });
   }
-  
 
+  async function join(e)
+  {
+    axios.post("http://localhost:4000/joinSpace", {classCode})
+    .then(result=>{
+      if(result.data.joined){
+        console.log("Joined Successfully");
+      }
+    })
+    .catch(err=>{console.log(err)});
+  }
+  
+  //create class form
   if (visibility == 'visible') {
     return (
       <>
@@ -74,13 +93,44 @@ function Spaces() {
       </>
     )
   }
+
+  //join class form
+  else if (joinFormVisibility == 'visible') {
+    return (
+      <>
+
+        <Navbar />
+        <StyledSpace>
+          <button className='button' style={{ "background-color": "blue" }} onClick={() => { setVisibility("visible"); setZindex(2) }}> + Create Space</button>
+          <button className='button'>Join</button>
+
+          <form style={{ "visibility": joinFormVisibility }}>
+            <div className='formdiv' style={{ "width": "20%", "display":"flex", "flexDirection":"column", "alignItems":"center"}}>
+              <h1>Join Space</h1>
+              <div>
+              <label style={{"marginRight":"10px"}}>Join</label>
+              <input name='classCode' type='text' onChange={(e) => { setclassCode(e.target.value) }} style={{"width":"40%", "margin-left": "auto", "margin-right": "auto"}}></input>
+              </div>
+              <div style={{ "margin-left": "auto", "margin-right": "auto" }}>
+                <button className="createButton" type='submit' onClick={join}>Join</button>
+                <button className="createButton" onClick={() => setJoinFormVisibility("hidden")}>Close</button>
+              </div>
+              </div>
+              
+          </form>
+        </StyledSpace>
+      </>
+    )
+  }
+
+  //normal page
   else {
     return (
       <>
         <Navbar />
         <StyledSpace>
           <button className='button' style={{ "background-color": "blue" }} onClick={() => { setVisibility("visible"); setZindex(2) }}> + Create Space</button>
-          <button className='button'>Join</button>
+          <button className='button' onClick={()=> {setJoinFormVisibility("visible"); setZindex(2)}}>Join</button>
 
           <div className='container'>
             <div className="card">
