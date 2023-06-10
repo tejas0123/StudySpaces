@@ -16,7 +16,7 @@ Router.post('/newSpace',(req,res,next)=>{
         desc : req.body.desc,
         students:req.body.students
     };
-
+    
     Spaces.insertMany(newSpace)
     .then(result=>{
         res.json({"created":true});
