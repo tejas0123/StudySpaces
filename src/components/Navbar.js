@@ -17,7 +17,7 @@ function Navbar(props) {
    useEffect(() => {
     loginStatus = localStorage.getItem("isLoggedIn");
     
-    if (isLoggedIn || loginStatus == "true") {
+    if (isLoggedIn || loginStatus == 'true') {
       console.log(loginStatus);
       axios.defaults.withCredentials = true;
       axios.get("http://localhost:4000/login")
@@ -63,7 +63,7 @@ function Navbar(props) {
       axios.get("http://localhost:4000/logout") //api call to clear the cookie on the server
         .then(res => {
           console.log(res);
-          localStorage.setItem("isLoggedIn", "false");
+          localStorage.setItem("isLoggedIn", 'false');
           setLogin(false);
           navigate('/');
         });

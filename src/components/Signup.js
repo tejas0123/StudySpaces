@@ -3,8 +3,7 @@ import { useState,useContext } from 'react';
 import axios from 'axios';
 import { StyledPopup } from '../styled/LoginPopup.styled';
 import { useNavigate } from 'react-router';
-import { context } from '../UseContext.js';
-
+import {context} from '../UseContext';
 
 function Signup() {
   

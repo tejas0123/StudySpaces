@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Link, Route}from 'react-router-dom'
 import Spaces from './components/Spaces';
 import { useContext ,createContext,useState} from 'react';
 import {context} from './UseContext.js';
+import SpaceInfo from './components/SpaceInfo';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path = '/signin' element = {<><LoginPopup/></>}/>
           <Route path = '/createaccount' element = {<><SignUp/></>}/>
           <Route path = '/mySpaces' element = {<Spaces/>} />
+          <Route path = '/spaceinfo' element = {<SpaceInfo/>} />
        </Routes>
        </context.Provider>
      {/* </main> */}
