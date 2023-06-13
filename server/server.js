@@ -10,6 +10,7 @@ const saltRounds = 10;
 const UserRouter = require('./Routes/UserRoutes.js');
 const User = require('./Schemas/UsersSchema.js')
 
+
 app.use(express.json());
 app.use(cors({
     origin: ["http://localhost:3000"],
