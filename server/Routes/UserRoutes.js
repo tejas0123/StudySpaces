@@ -6,7 +6,9 @@ const User = require('../Schemas/UsersSchema');
 Router.get('/fetchAllSpaces', async(req,res)=>{
     let joined = [];
     let created = [];
-    let user = await User.findOne({email : req.session.user});
+    if(req.session.user)
+    {
+        let user = await User.findOne({email : req.session.user});
     console.log(user);
     
     joined = user.joined;
@@ -41,9 +43,13 @@ Router.get('/fetchAllSpaces', async(req,res)=>{
     }
 
     res.json({"joined" : joinedSpaces, "created" : createdSpaces});
+    }
+    else
+    res.json({"joined" : joined, "created" : created})
 })
 
-Router.get('/getSpaceById',async(req,res)=>{
+Router.post('/SpaceById',async(req,res)=>{
+    console.log(req.body.id);
     const space = await Spaces.findOne({_id:req.body.id});
     console.log(space);
     res.json(space);

@@ -10,9 +10,9 @@ import SpaceInfo from './components/SpaceInfo';
 import Navbar from './components/Navbar';
 import Chat from './components/Chat';
 import { io } from 'socket.io-client';
+import Quiz from './components/Quiz';
 
 const socket = io.connect("http://localhost:5000");
-
 
 function App() {
  
@@ -33,6 +33,7 @@ function App() {
           <Route path = '/spaceinfo' element = {<SpaceInfo/>} />
           
           <Route path = '/chat' element = {<><Navbar/><Chat socket = {socket}/></>}/>
+          <Route path = '/quiz' element = {<Quiz/>} />
        </Routes>
        </context.Provider>
      {/* </main> */}

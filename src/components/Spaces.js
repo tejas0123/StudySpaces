@@ -2,11 +2,9 @@ import React, { useEffect, useContext } from "react";
 import Navbar from "./Navbar";
 import { StyledSpace } from "../styled/Spaces.styled";
 import { useState } from "react";
-import { StyledPopup } from "../styled/LoginPopup.styled";
 import axios from "axios";
 import { useNavigate } from 'react-router';
 import { context } from "../UseContext";
-import { Navigate } from "react-router";
 
 function Spaces() {
   const [visibility, setVisibility] = useState("hidden");
@@ -23,20 +21,20 @@ function Spaces() {
   const [isLoggedIn, setLogin] = useContext(context);
   const navigate = useNavigate();
   useEffect(() => {
-    if (isLoggedIn) {
+    console.log(isLoggedIn);
       axios.defaults.withCredentials = true;
       axios
         .get("http://localhost:4000/fetchAllSpaces")
         .then((res) => {
+          console.log(res);
           setCreatedSpace(res.data.created);
           setjoinedSpace(res.data.joined);
         })
         .catch((err) => {
           console.log(err);
         });
-    }
   }, []);
-
+ 
   async function submit(e) {
     let students = [];
     axios

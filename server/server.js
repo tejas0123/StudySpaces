@@ -11,6 +11,7 @@ const UserRouter = require('./Routes/UserRoutes.js');
 const User = require('./Schemas/UsersSchema.js')
 const Spaces = require('./Schemas/SpacesSchema.js')
 
+
 app.use(express.json());
 app.use(cors({
     origin: ["http://localhost:3000"],
