@@ -24,6 +24,9 @@ const SpacesSchema = new mongoose.Schema({
     students:{
         type:[String],
         required:true
+    },
+    quiz:{
+       type:[Object] 
     }
  });
  //creating a collection

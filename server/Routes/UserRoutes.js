@@ -57,7 +57,8 @@ Router.post('/newSpace',async(req,res,next)=>{
         subject : req.body.subject,
         code : req.body.code,
         desc : req.body.desc,
-        students:req.body.students
+        students:req.body.students,
+        quiz:[]
     };
     
     Spaces.insertMany(newSpace)
@@ -92,4 +93,16 @@ Router.post("/joinSpace", async(req, res)=>{
     .then(result=>{res.json({"joined":"true"})});
 });
 
+Router.post("/UploadQuiz",async(req,res)=>{
+    let space = await Spaces.findOne({_id:req.body.id});
+    console.log(space);
+    space.quiz.push(req.body.quiz);
+    Spaces.findOneAndUpdate({_id:req.body.id},space).
+    then(result=>{
+        res.json({added:true});
+    })
+    .catch(err=>{
+        res.json({added:false});
+    })
+})
 module.exports = Router;

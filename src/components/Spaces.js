@@ -22,19 +22,22 @@ function Spaces() {
   const [joinedSpace, setjoinedSpace] = useState([]);
   const [isLoggedIn, setLogin] = useContext(context);
   const navigate = useNavigate();
+  let createdspace,joinedspace;
   useEffect(() => {
-    if (isLoggedIn) {
+    
       axios.defaults.withCredentials = true;
       axios
         .get("http://localhost:4000/fetchAllSpaces")
         .then((res) => {
-          setCreatedSpace(res.data.created);
-          setjoinedSpace(res.data.joined);
+           createdspace = res.data.created;
+           joinedspace = res.data.joined
+          setCreatedSpace(createdspace);
+          setjoinedSpace(joinedspace);
         })
         .catch((err) => {
           console.log(err);
         });
-    }
+    
   }, []);
 
   async function submit(e) {

@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { useLocation } from 'react-router'
 import Navbar from './Navbar';
+import axios from 'axios';
 export default function Quiz() {
+    const search = useLocation().search;
+    const id = new URLSearchParams(search).get("id");
     const [quiz,setQuiz] = useState([]);
- 
     const [options,setOptions] = useState([]);
     const [ans,setAns] = useState(-1);
     const [questions,setQuestions] = useState([{question:"set question",options:['1','2','3','4'],ans}]);
@@ -52,10 +55,11 @@ export default function Quiz() {
       questionSet[ind].options[opind] = UpdatedOption;
       setQuestions(questionSet);
     }
-    const Submit = ()=>{
+    const Submit = async()=>{
       console.log("quiz uploaded!");
       console.log(questions);
-      
+      const response  =  await axios.post('http://localhost:4000/UploadQuiz',{quiz:questions,id:id});
+      console.log(response)
     }
   return (
     <div>
