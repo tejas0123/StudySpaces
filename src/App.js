@@ -7,6 +7,12 @@ import Spaces from './components/Spaces';
 import { useContext ,createContext,useState} from 'react';
 import {context} from './UseContext.js';
 import SpaceInfo from './components/SpaceInfo';
+import Navbar from './components/Navbar';
+import Chat from './components/Chat';
+import { io } from 'socket.io-client';
+
+const socket = io.connect("http://localhost:5000");
+
 
 function App() {
  
@@ -25,6 +31,8 @@ function App() {
           <Route path = '/createaccount' element = {<><SignUp/></>}/>
           <Route path = '/mySpaces' element = {<Spaces/>} />
           <Route path = '/spaceinfo' element = {<SpaceInfo/>} />
+          
+          <Route path = '/chat' element = {<><Navbar/><Chat socket = {socket}/></>}/>
        </Routes>
        </context.Provider>
      {/* </main> */}
@@ -34,4 +42,5 @@ function App() {
   );
 }
 
-export default App;
+export default App ;
+

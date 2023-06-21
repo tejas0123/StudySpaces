@@ -19,7 +19,7 @@ display:flex;
 flex-direction:column;
 width:330px;
 height:auto;
-background-color:#121212;
+background-color:#06373A;
 color:white;
 margin-right:auto;
 margin-left:auto;
@@ -35,14 +35,14 @@ border-radius:15px;
     width:320px;
     border-radius:10px;
     height:40px;
-    background-color:#ccff90;
+    background-color:#A5f0C5;
 }
 
 .formelements button{
     width:320px;
     border-radius:10px;
     height:40px;
-    background-color:#238636;
+    background-color:#00917C;
     border:none;
     color:white;
 }
@@ -59,11 +59,12 @@ border-radius:15px;
 }
 
 button:hover{
-    background-color:darkgreen;
+    background-color:#a5f0c5;
     cursor:pointer;
+    color:black;
 }
 a{
-    color:green;
+    color:#00917c;
 }
 
 `

@@ -145,7 +145,7 @@ function Spaces() {
                   style={{
                     "margin-left": "10px",
                     "margin-top": "10px",
-                    "background-color": "#ccff90",
+                    "background-color": "#A5F0C5",
                     "font-size": "17px",
                     "border-radius": "5px",
                   }}
@@ -215,7 +215,7 @@ function Spaces() {
                   alignItems: "center",
                 }}
               >
-                <label>Join</label>
+                <label>Code</label>
                 <input
                   name="classCode"
                   type="text"
@@ -293,7 +293,7 @@ function Spaces() {
             {createdSpace.map((item) => {
               return (
                 <div className="card" onClick={()=>displaySpace(item._id)}>
-                  <h2>{item.name}</h2>
+                  <div><h2>{item.name}</h2></div>
                   <div className="card-element" >
                     <img
                       src={require("../images/teacher.png")}
@@ -301,8 +301,6 @@ function Spaces() {
                       height="40px"
                     ></img>
                     <p>{item.creator}</p>
-                  </div>
-                  <div className="card-element">
                     <img
                       src={require("../images/subject.png")}
                       width="40px"
@@ -310,6 +308,7 @@ function Spaces() {
                     ></img>
                     <p>{item.subject}</p>
                   </div>
+                 
                   <p className="code">
                     <b>Code</b> : {item.code}
                   </p>
@@ -324,7 +323,9 @@ function Spaces() {
             {joinedSpace.map((item) => {
               return (
                 <div className="card">
-                  <h2>{item.name}</h2>
+                  <div className="cardHeading">
+                    <h2>{item.name}</h2>
+                  </div>
                   <div className="card-element">
                     <img
                       src={require("../images/teacher.png")}
@@ -332,8 +333,6 @@ function Spaces() {
                       height="40px"
                     ></img>
                     <p>{item.creator}</p>
-                  </div>
-                  <div className="card-element">
                     <img
                       src={require("../images/subject.png")}
                       width="40px"
@@ -341,6 +340,7 @@ function Spaces() {
                     ></img>
                     <p>{item.subject}</p>
                   </div>
+                  
                   <p className="code">
                     <b>Code</b> : {item.code}
                   </p>

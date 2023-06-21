@@ -3,7 +3,7 @@ export const StyledSpace = styled.div`
 font-family: 'Poppins';
 .button{
     margin:5px;
-    background-color:green;
+    background-color:#159947;
     color:white;
     padding: 10px 15px 10px 15px;
     border:none;
@@ -16,7 +16,7 @@ font-family: 'Poppins';
 
 .formdiv{
     width:50%;
-    background-color:#003400;
+    background-color:#06373A;
     margin-right:auto;
     margin-left:auto;
     height:40%;
@@ -24,7 +24,7 @@ font-family: 'Poppins';
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    border-radius:5px;
+    border-radius:15px;
     color:white;
 }
 
@@ -41,14 +41,14 @@ font-family: 'Poppins';
     margin-left:10px;
     width:40%;
     height:30px;
-    background-color:#ccff90;
+    background-color:#A5F0C5;
     color:black;
     font-size:17px;
     border-radius:5px;
 }
 .createButton{
     margin:5px;
-    background-color:green;
+    background-color:#00917c;
     color:white;
     padding: 10px 15px 10px 15px;
     border:none;
@@ -56,24 +56,24 @@ font-family: 'Poppins';
     font-size:15px;
 }
 .createButton:hover{
-    background-color:lightgreen;
+    background-color:#A5F0C5;
     transition:0.1s;
     color:green;
     cursor:pointer;
 }
 
 .card {
-    border: 3px solid black;
-    border-radius: 5px;
+    
+    border-radius: 15px;
     margin: 10px;
     padding: 10px;
-    background-color: #003400;
-    color: white;
+    background-color: #035956;
+    color: azure;
     // font-family: 'Poppins';
 }
 
 .card:hover{
-    box-shadow: 0 4px 4px black;
+    box-shadow: 0 2px 2px black;
     cursor: pointer;
 }
 

@@ -14,6 +14,7 @@ function Navbar(props) {
   const [isLoggedIn, setLogin] = useContext(context);
   console.log(typeof(setLogin));
   let loginStatus; 
+  
    useEffect(() => {
     loginStatus = localStorage.getItem("isLoggedIn");
     
@@ -78,6 +79,7 @@ function Navbar(props) {
           <Link to='/'>Home</Link>
           <Link to='/myspaces'>My Spaces</Link>
           <Link to=''>Task Stack</Link>
+          <Link to='/chat'>Chat</Link>
           <a role='button' href={href} className='loginbtn' onClick={logout}>{btnText}</a>
         </div>
 
