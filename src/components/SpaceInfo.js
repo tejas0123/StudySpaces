@@ -22,7 +22,7 @@ const SpaceInfo = () => {
     <Navbar />
     <StyledSpaceInfo>
       <div >
-        <Link className='button' to="/quiz">Create Quiz</Link>
+        <Link className='button' to="/quiz" style={{"text-decoration": "none"}}>Create Quiz</Link>
       </div>
     </StyledSpaceInfo>
     </>
