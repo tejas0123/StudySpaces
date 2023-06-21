@@ -143,7 +143,7 @@ function Spaces() {
                   style={{
                     "margin-left": "10px",
                     "margin-top": "10px",
-                    "background-color": "#A5F0C5",
+                    "background-color": "",
                     "font-size": "17px",
                     "border-radius": "5px",
                   }}

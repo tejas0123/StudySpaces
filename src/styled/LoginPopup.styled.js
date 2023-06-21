@@ -35,7 +35,9 @@ border-radius:15px;
     width:320px;
     border-radius:10px;
     height:40px;
-    background-color:#A5f0C5;
+    background-color:#121212;
+    border:none;
+    color:white;
 }
 
 .formelements button{
@@ -56,15 +58,19 @@ border-radius:15px;
     text-align:center;
     border:1px solid grey;
     border-radius:10px;
+    font-size:14px;
 }
 
 button:hover{
     background-color:#a5f0c5;
+    transition:0.2s;
     cursor:pointer;
     color:black;
 }
 a{
     color:#00917c;
 }
+
+
 
 `
