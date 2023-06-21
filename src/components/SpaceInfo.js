@@ -22,11 +22,7 @@ const SpaceInfo = () => {
     <Navbar />
     <StyledSpaceInfo>
       <div >
-<<<<<<< HEAD
         <Link className='button' to={"/quiz?id="+id}>Create Quiz</Link>
-=======
-        <Link className='button' to="/quiz" style={{"text-decoration": "none"}}>Create Quiz</Link>
->>>>>>> 0079cba5e7ed922ac3110d286590271ad739a9dc
       </div>
     </StyledSpaceInfo>
     </>

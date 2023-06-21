@@ -2,12 +2,9 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useLocation } from 'react-router'
 import Navbar from './Navbar';
-<<<<<<< HEAD
 import axios from 'axios';
-=======
 import { StyledQuizPage } from '../styled/Quiz.styled';
 
->>>>>>> 0079cba5e7ed922ac3110d286590271ad739a9dc
 export default function Quiz() {
     const search = useLocation().search;
     const id = new URLSearchParams(search).get("id");
@@ -60,13 +57,9 @@ export default function Quiz() {
     }
     const Submit = async()=>{
       console.log("quiz uploaded!");
-<<<<<<< HEAD
       console.log(questions);
       const response  =  await axios.post('http://localhost:4000/UploadQuiz',{quiz:questions,id:id});
       console.log(response)
-=======
-      console.log(questions); 
->>>>>>> 0079cba5e7ed922ac3110d286590271ad739a9dc
     }
   return (
     <div>
