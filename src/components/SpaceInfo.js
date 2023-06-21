@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import Navbar from './Navbar';
+import { StyledSpaceInfo } from '../styled/SpaceInfo.styled';
+import { Link } from 'react-router-dom';
 const SpaceInfo = () => {
     const search = useLocation().search;
     const id = new URLSearchParams(search).get("id");
     const [space,setspace] = useState({});
     useEffect(()=>{
-       axios.get('http://localhost:4000/getSpaceById',{id}).
+       axios.post('http://localhost:4000/SpaceById',{id}).
        then((space)=>{
         console.log(space);
        setspace(space.data)
@@ -16,10 +18,14 @@ const SpaceInfo = () => {
        })
     },[])
   return (
-    <div>
+    <>
     <Navbar />
-      <h1>{space.name}</h1>
-    </div>
+    <StyledSpaceInfo>
+      <div >
+        <Link className='button' to="/quiz">Create Quiz</Link>
+      </div>
+    </StyledSpaceInfo>
+    </>
   )
 }
 

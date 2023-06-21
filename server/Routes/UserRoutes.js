@@ -43,7 +43,8 @@ Router.get('/fetchAllSpaces', async(req,res)=>{
     res.json({"joined" : joinedSpaces, "created" : createdSpaces});
 })
 
-Router.get('/getSpaceById',async(req,res)=>{
+Router.post('/SpaceById',async(req,res)=>{
+    console.log(req.body.id);
     const space = await Spaces.findOne({_id:req.body.id});
     console.log(space);
     res.json(space);
