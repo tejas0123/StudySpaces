@@ -20,22 +20,22 @@ function Spaces() {
   const [joinedSpace, setjoinedSpace] = useState([]);
   const [isLoggedIn, setLogin] = useContext(context);
   const navigate = useNavigate();
-  let createdspace,joinedspace;
+  let createdspace, joinedspace;
   useEffect(() => {
     console.log(isLoggedIn);
-      axios.defaults.withCredentials = true;
-      axios
-        .get("http://localhost:4000/fetchAllSpaces")
-        .then((res) => {
-          console.log(res);
-          setCreatedSpace(res.data.created);
-          setjoinedSpace(res.data.joined);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    axios.defaults.withCredentials = true;
+    axios
+      .get("http://localhost:4000/fetchAllSpaces")
+      .then((res) => {
+        console.log(res);
+        setCreatedSpace(res.data.created);
+        setjoinedSpace(res.data.joined);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
- 
+
   async function submit(e) {
     let students = [];
     axios
@@ -70,11 +70,14 @@ function Spaces() {
   }
 
 
-  const displaySpace = (id) => {
+  const ManageSpace = (id) => {
     console.log(id);
     navigate(`/spaceinfo?id=${id}`);
   }
-
+  const DisplaySpace = (id) => {
+    console.log(id);
+    navigate(`/viewspace?id=${id}`);
+  }
   //create class form
   if (visibility == "visible") {
     return (
@@ -291,7 +294,7 @@ function Spaces() {
           <div className="container">
             {createdSpace.map((item) => {
               return (
-                <div className="card" onClick={()=>displaySpace(item._id)}>
+                <div className="card" onClick={() => ManageSpace(item._id)}>
                   <div><h2>{item.name}</h2></div>
                   <div className="card-element" >
                     <img
@@ -307,7 +310,7 @@ function Spaces() {
                     ></img>
                     <p>{item.subject}</p>
                   </div>
-                 
+
                   <p className="code">
                     <b>Code</b> : {item.code}
                   </p>
@@ -321,7 +324,7 @@ function Spaces() {
           <div className="container">
             {joinedSpace.map((item) => {
               return (
-                <div className="card">
+                <div className="card" onClick={() => DisplaySpace(item._id)}>
                   <div className="cardHeading">
                     <h2>{item.name}</h2>
                   </div>
@@ -339,7 +342,7 @@ function Spaces() {
                     ></img>
                     <p>{item.subject}</p>
                   </div>
-                  
+
                   <p className="code">
                     <b>Code</b> : {item.code}
                   </p>

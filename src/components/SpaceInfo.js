@@ -23,6 +23,7 @@ const SpaceInfo = () => {
     <StyledSpaceInfo>
       <div >
         <Link className='button' to={"/quiz?id="+id}>Create Quiz</Link>
+        
       </div>
     </StyledSpaceInfo>
     </>
