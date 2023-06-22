@@ -21,7 +21,7 @@ function LoginPopup() {
       try{
         setErrorText('');
         axios.defaults.withCredentials = true;
-        axios.post("http://192.168.1.93:4000/login", {email, password})
+        axios.post("http://localhost:4000/login", {email, password})
         .then(res =>{
           setLogin(true);
           localStorage.setItem("isLoggedIn", 'true');

@@ -21,7 +21,7 @@ function Navbar(props) {
     if (isLoggedIn || loginStatus == 'true') {
       console.log(loginStatus);
       axios.defaults.withCredentials = true;
-      axios.get("http://192.168.1.93:4000/login")
+      axios.get("http://localhost:4000/login")
         .then(res => {
           console.log(res);
           if (res.data.valid) {
@@ -39,7 +39,7 @@ function Navbar(props) {
         });
     }
     else {
-      axios.get("http://192.168.1.93:4000/login")
+      axios.get("http://localhost:4000/login")
         .then(res => {
           console.log(res);
           if (res.data.valid) {
@@ -61,7 +61,7 @@ function Navbar(props) {
   const logout = () => {
     if (href == '') {
       axios.defaults.withCredentials = true;
-      axios.get("http://192.168.1.93:4000/logout") //api call to clear the cookie on the server
+      axios.get("http://localhost:4000/logout") //api call to clear the cookie on the server
         .then(res => {
           console.log(res);
           localStorage.setItem("isLoggedIn", 'false');

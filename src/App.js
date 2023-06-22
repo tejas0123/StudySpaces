@@ -14,7 +14,7 @@ import { io } from 'socket.io-client';
 import Quiz from './components/Quiz';
 import TakeQuiz from './components/TakeQuiz';
 
-const socket = io.connect("http://192.168.1.93:5000");
+const socket = io.connect("http://localhost:5000");
 
 function App() {
  

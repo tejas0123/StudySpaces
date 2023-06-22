@@ -14,7 +14,7 @@ const Spaces = require('./Schemas/SpacesSchema.js')
 
 app.use(express.json());
 app.use(cors({
-    origin: ["http://192.168.1.93:3000"],
+    origin: ["http://localhost:3000"],
     methods: ["GET", "POST"],
     credentials:true
 }));
