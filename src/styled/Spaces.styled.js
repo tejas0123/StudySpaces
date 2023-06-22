@@ -41,7 +41,7 @@ font-family: 'Poppins';
     margin-left:10px;
     width:40%;
     height:30px;
-    background-color:#A5F0C5;
+    background-color:;
     color:black;
     font-size:17px;
     border-radius:5px;
