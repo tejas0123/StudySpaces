@@ -50,9 +50,11 @@ Router.get('/fetchAllSpaces', async(req,res)=>{
 
 Router.post('/SpaceById',async(req,res)=>{
     console.log(req.body.id);
+
     const space = await Spaces.findOne({_id:req.body.id});
     console.log(space);
-    res.json(space);
+    
+    res.json({space,User:req.session.user});
 })
 
 Router.post('/newSpace',async(req,res,next)=>{
@@ -62,7 +64,8 @@ Router.post('/newSpace',async(req,res,next)=>{
         subject : req.body.subject,
         code : req.body.code,
         desc : req.body.desc,
-        students:req.body.students
+        students:req.body.students,
+        quiz:[]
     };
     
     Spaces.insertMany(newSpace)
@@ -97,4 +100,34 @@ Router.post("/joinSpace", async(req, res)=>{
     .then(result=>{res.json({"joined":"true"})});
 });
 
+Router.post("/UploadQuiz",async(req,res)=>{
+    let space = await Spaces.findOne({_id:req.body.id});
+    console.log(space);
+    space.quiz.push({Content:req.body.quiz,DueDate:req.body.DueDate,Name:req.body.Name,Submissions:[]});
+    Spaces.findOneAndUpdate({_id:req.body.id},space).
+    then(result=>{
+        res.json({added:true});
+    })
+    .catch(err=>{
+        res.json({added:false});
+    })
+})
+
+Router.post("/SubmitQuiz",async(req,res)=>{
+    let space = await Spaces.findOne({_id:req.body.id});
+    let marks=0;
+    for(let i=0;i<space.quiz[req.body.No].Content.length;i++)
+    {
+        if(space.quiz[req.body.No].Content[i].ans==req.body.Answers[i])
+        marks++;
+    }
+    space.quiz[req.body.No].Submissions.push({Name:req.session.user,Marks:marks,Answers:req.body.Answers});
+    Spaces.findOneAndUpdate({_id:req.body.id},space).
+    then(result=>{
+        res.json({added:true});
+    })
+    .catch(err=>{
+        res.json({added:false});
+    }) 
+})
 module.exports = Router;
