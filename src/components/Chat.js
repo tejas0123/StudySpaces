@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StyledChatWindow } from '../styled/Chat.styled';
 import { ReactDOM } from 'react';
-
+import ScrollToBottom from 'react-scroll-to-bottom';
 function Chat({ socket }) {
 
     const [room, setRoom] = useState("");
@@ -9,16 +9,15 @@ function Chat({ socket }) {
     const [MsgArray, setMsgArray] = useState([]);
     const [username, setUsername] = useState("");
     const [msg, setMsg] = useState("");
-    const [chatMsg, setChatMsg] = useState("");
     const [space, setSpace] = useState("Chat");
     const [user, setUser] = useState("");
-    const [showChatWindow, setShowChatWindow] = useState("hidden");
-    const [showUserWindow, setShowUserWindow] = useState("visible");
+    const [showChatWindow, setShowChatWindow] = useState(false);
+    const [showUserWindow, setShowUserWindow] = useState(true);
     const joinRoom = () => {
         if (room != "" && username != "") {
             socket.emit("join_room", { room, username });
-            setShowChatWindow("visible");
-            setShowUserWindow("hidden");
+            setShowChatWindow(true);
+            setShowUserWindow(false);
             setSpace(room);
             setUser(username);
         }
@@ -54,39 +53,54 @@ function Chat({ socket }) {
                 <h2>{space}</h2>
             </div>
             <div className='chat'>
-                
+            
+                {showUserWindow && (
                 <div className='userWindow' style={{ "visibility": showUserWindow }}>
-                    <label>Username</label>
-                    <input type='text' name='username' onChange={(e) => { setUsername(e.target.value); }}></input>
+                    <div >
+                        <label>Username</label>
+                        <input type='text' name='username' onChange={(e) => { setUsername(e.target.value); }}></input>
+                    </div>
+
+                    <div>
+                        <label>Space Id</label>
+                        <input type='text' name='spaceid' onChange={(e) => { setRoom(e.target.value); }}></input>
+                    </div>
+
+                    <div><button type='submit' className='joinBtn' onClick={joinRoom} >Join</button></div>
                 </div>
+                )}
 
-                <div className='userWindow' style={{ "visibility": showUserWindow }}>
-                    <label>Space Id</label>
-                    <input type='text' name='spaceid' onChange={(e) => { setRoom(e.target.value); }}></input>
-                </div>
-
-                <div className='userWindow' style={{ "visibility": showUserWindow }}><button type='submit' className='joinBtn' onClick={joinRoom} >Join</button></div>
-
+                {showChatWindow &&(
                 <div className='chat-window' style={{ "visibility": showChatWindow }}>
-
-                    <div className='chat-body'>
-                        {
-                            MsgArray.map((item) => {
-                                return(
-                                    <div className={(item.type == 'sent') ? 'sentMessage' : 'receivedMessage'} ><p className='sender'>{item.msgSender}</p><p>{item.msg}</p><p className='time'>{item.time}</p></div> 
-                                )
-                            })
-                        }
-                        {/* <div className='chatMsg'><p>{chatMsg}</p></div> */}
-                    </div>
-
                     
+                        <div className='chat-body'>
+                        <ScrollToBottom className='chatArea'>
+                            {
+                                MsgArray.map((item) => {
+                                    return(
+                                        <div className={(item.type == 'sent') ? 'sentMessage' : 'receivedMessage'} >
+                                            <div className='sender'>{item.msgSender}</div>
+                                            <div className='messageContent'>{item.msg}</div>
+                                            <div className='time'>{item.time}</div>
+                                        </div> 
+                                    )
+                                })
+                                
+                            }
+                            </ScrollToBottom>
+                            {/* <div className='chatMsg'><p>{chatMsg}</p></div> */}
+                        </div>
 
-                    <div className='chat-footer'>
-                        <input className='msgBox' type='text' name='msg' placeholder='message..' value={msg} onChange={(e) => { setMsg(e.target.value); }}></input>
-                        <button className='sendButton' type='submit' name='send' onClick={sendMsg}>&#9658;</button>
-                    </div>
+                        
+
+                        <div className='chat-footer'>
+                            <input className='msgBox' type='text' name='msg' placeholder='message..' value={msg} onChange={(e) => { setMsg(e.target.value); }}></input>
+                            <button className='sendButton' type='submit' name='send' onClick={sendMsg}>&#9658;</button>
+                        </div>
+                    
                 </div>
+                )}
+                
             </div>
         </StyledChatWindow>
     )

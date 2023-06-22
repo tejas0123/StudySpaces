@@ -14,6 +14,7 @@ padding: 0;
 margin-left: auto;
 margin-right: auto;
 
+
 .chat-header{
     background-color: #00917C;
     width:450px ;
@@ -30,6 +31,7 @@ margin-right: auto;
     align-items: center;
 }
 .userWindow{
+    height:200px;
     margin-top:10px;
 }
 .userWindow input{
@@ -39,6 +41,8 @@ margin-right: auto;
     margin-top: 5px;
     width: 200px;
 }
+
+
 .joinBtn{
     margin-top:10px;
     background-color: #A5F0C5;
@@ -77,6 +81,7 @@ margin-right: auto;
 }
 
 .sentMessage{
+    margin-top: 20px;
     padding-left: 10px;
     background-color:skyblue;
     border-radius:10px;
@@ -84,20 +89,22 @@ margin-right: auto;
     width:40%;
     padding: 2px 0px 0px 5px;
     color: black;
-}
-
-.chat-body{
-  
-    
+    margin-bottom:20px;
 }
 
 .receivedMessage{
+    margin-top: 20px;
     background-color:cornflowerblue;
     border-radius:10px;
     margin-right:auto;
     width:40%;
     padding: 2px 0px 0px 5px;
     color: black;
+    margin-bottom:20px;
+}
+
+.messageContent{
+    margin-top:10px;
 }
 
 .time{
@@ -113,4 +120,9 @@ p{
 .sender{
     color:darkblue;
 }
+
+div.chat-body .chatArea{
+    height:350px;
+}
+
 `
