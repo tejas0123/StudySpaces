@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { useLocation,useNavigate} from 'react-router'
 import Navbar from './Navbar';
+import axios from 'axios';
 import { StyledQuizPage } from '../styled/Quiz.styled';
 
 export default function Quiz() {
+    const search = useLocation().search;
+    const id = new URLSearchParams(search).get("id");
     const [quiz,setQuiz] = useState([]);
- 
     const [options,setOptions] = useState([]);
     const [ans,setAns] = useState(-1);
     const [questions,setQuestions] = useState([{question:"",options:['','','',''],ans}]);
+    const [date,setDueDate] = useState();
+    const [quizname,setQuizName] = useState(""); 
+    const navigate = useNavigate();
     function Addquestion(){
        var questionSet =[];
        questionSet = questions.slice();
-       questionSet.push({question:"",options:['','','',''],ans:-1});
+       questionSet.push({question:"",options:['','','',''],ans:-1,DueDate:""});
        setQuestions(questionSet); 
     }
     const Removequestion = (ind)=>{
@@ -52,9 +58,19 @@ export default function Quiz() {
       questionSet[ind].options[opind] = UpdatedOption;
       setQuestions(questionSet);
     }
-    const Submit = ()=>{
+    const Submit = async()=>{
       console.log("quiz uploaded!");
-      console.log(questions); 
+      
+      const response  =  await axios.post('http://localhost:4000/UploadQuiz',{quiz:questions,id:id,DueDate:date,Name:quizname});
+      if(response.data.added==true)
+        navigate('/myspaces');
+    }
+    const setDate = (e)=>{
+      setDueDate(e.target.value);
+      console.log(date);
+    }
+    const SetQuizName = (e)=>{
+      setQuizName(e.target.value);
     }
   return (
     <div>
@@ -90,7 +106,9 @@ export default function Quiz() {
         }) }
         <br/>
         <div className='quiz-btn'>
+          <input type="text" value={quizname} className='quiz-opn' placeholder='Enter Quiz Topic' onChange={(e)=>SetQuizName(e)}/>
         <button className='button' style={{"background-color": "green" }} onClick={Addquestion}>Add question</button>
+        <input className='button' style={{"background-color": "green" }} type="date" value={date} onChange={(e)=>setDate(e)}></input>
      <button className='button' onClick={Submit}>Submit</button>
      </div>
      </StyledQuizPage>

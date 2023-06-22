@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledQuizPage = styled.div`
+export const TakeQuizPage = styled.div`
 *{
     font-family: 'Poppins';
 }
