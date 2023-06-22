@@ -5,8 +5,8 @@ import { ReactDOM } from 'react';
 function Chat({ socket }) {
 
     const [room, setRoom] = useState("");
-    const msgArray = [];
-    var msgCount = 0;
+    let msgArray = [];
+    const [MsgArray, setMsgArray] = useState([]);
     const [username, setUsername] = useState("");
     const [msg, setMsg] = useState("");
     const [chatMsg, setChatMsg] = useState("");
@@ -36,14 +36,15 @@ function Chat({ socket }) {
                 msg: msg
             };
             await socket.emit("send_message", messageData);
-            
+            setMsgArray((list) => [...list, {msg: messageData.msg, time: messageData.time, msgSender:messageData.sender, type: "sent"}]);
+            setMsg("");
         }
     };
 
     useEffect(() => {
         socket.on("receive_message", (data) => {
             console.log(data);
-            setChatMsg(data.msg);
+            setMsgArray((list) => [...list, {msg: data.msg, time: data.time, msgSender:data.sender,  type: "received"}]);
         });
     }, [socket]);
 
@@ -69,13 +70,20 @@ function Chat({ socket }) {
                 <div className='chat-window' style={{ "visibility": showChatWindow }}>
 
                     <div className='chat-body'>
-                        <div className='chatMsg'><p>{chatMsg}</p></div>
+                        {
+                            MsgArray.map((item) => {
+                                return(
+                                    <div className={(item.type == 'sent') ? 'sentMessage' : 'receivedMessage'} ><p className='sender'>{item.msgSender}</p><p>{item.msg}</p><p className='time'>{item.time}</p></div> 
+                                )
+                            })
+                        }
+                        {/* <div className='chatMsg'><p>{chatMsg}</p></div> */}
                     </div>
 
                     
 
                     <div className='chat-footer'>
-                        <input className='msgBox' type='text' name='msg' placeholder='message..' onChange={(e) => { setMsg(e.target.value); }}></input>
+                        <input className='msgBox' type='text' name='msg' placeholder='message..' value={msg} onChange={(e) => { setMsg(e.target.value); }}></input>
                         <button className='sendButton' type='submit' name='send' onClick={sendMsg}>&#9658;</button>
                     </div>
                 </div>

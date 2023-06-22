@@ -75,4 +75,36 @@ margin-right: auto;
     transition: 0.1s;
     cursor: pointer;
 }
+
+.sentMessage{
+    background-color:skyblue;
+    border-radius:10px;
+    margin-left:auto;
+    width:40%;
+    padding: 2px 0px 0px 5px;
+    color: black;
+}
+
+.receivedMessage{
+    background-color:cornflowerblue;
+    border-radius:10px;
+    margin-right:auto;
+    width:40%;
+    padding: 2px 0px 0px 5px;
+    color: black;
+}
+
+.time{
+    padding-right: 4px;
+    text-align: right;
+    color: darkslategrey;
+    font-size: 13px;
+}
+p{
+    margin-top:5px;
+    
+}
+.sender{
+    color:darkblue;
+}
 `
