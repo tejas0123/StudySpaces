@@ -77,12 +77,18 @@ margin-right: auto;
 }
 
 .sentMessage{
+    padding-left: 10px;
     background-color:skyblue;
     border-radius:10px;
     margin-left:auto;
     width:40%;
     padding: 2px 0px 0px 5px;
     color: black;
+}
+
+.chat-body{
+  
+    
 }
 
 .receivedMessage{
