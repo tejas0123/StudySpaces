@@ -9,7 +9,7 @@ function Chat({ socket }) {
     var msgCount = 0;
     const [username, setUsername] = useState("");
     const [msg, setMsg] = useState("");
-    
+    const [chatMsg, setChatMsg] = useState("");
     const [space, setSpace] = useState("Chat");
     const [user, setUser] = useState("");
     const [showChatWindow, setShowChatWindow] = useState("hidden");
@@ -43,7 +43,7 @@ function Chat({ socket }) {
     useEffect(() => {
         socket.on("receive_message", (data) => {
             console.log(data);
-           
+            setChatMsg(data.msg);
         });
     }, [socket]);
 
@@ -69,7 +69,7 @@ function Chat({ socket }) {
                 <div className='chat-window' style={{ "visibility": showChatWindow }}>
 
                     <div className='chat-body'>
-                        
+                        <div className='chatMsg'><p>{chatMsg}</p></div>
                     </div>
 
                     
