@@ -13,6 +13,7 @@ import Chat from './components/Chat';
 import { io } from 'socket.io-client';
 import Quiz from './components/Quiz';
 import TakeQuiz from './components/TakeQuiz';
+import ViewSubmissions from './components/ViewSubmissions';
 
 const socket = io.connect("http://localhost:5000");
 
@@ -37,6 +38,7 @@ function App() {
           <Route path = '/TakeQuiz' element = {<TakeQuiz/>}/>
           <Route path = '/chat' element = {<><Navbar/><Chat socket = {socket}/></>}/>
           <Route path = '/quiz' element = {<Quiz/>} />
+          <Route path = '/viewsubmissions' element = {<ViewSubmissions/>} />
        </Routes>
        </context.Provider>
      {/* </main> */}

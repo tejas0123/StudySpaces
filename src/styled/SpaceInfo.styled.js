@@ -12,6 +12,18 @@ export const StyledSpaceInfo = styled.div`
 .button:hover{
     cursor:pointer;
 }
-
+.activequiz{
+    margin:4%;
+    display:flex;
+    flex-direction:horizontal;
+    column-gap:20px;
+}
+.quizcard{
+    color:white;
+    border:1px solid green;
+    border-radius:5px;
+    padding :20px;
+    background-color:#23395d;
+}
 
 `
