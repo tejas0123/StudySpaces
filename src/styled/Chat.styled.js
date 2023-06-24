@@ -83,7 +83,7 @@ margin-right: auto;
 .sentMessage{
     margin-top: 20px;
     padding-left: 10px;
-    background-color:skyblue;
+    background-color:#a5F0C5;
     border-radius:10px;
     margin-left:auto;
     width:40%;
@@ -94,7 +94,7 @@ margin-right: auto;
 
 .receivedMessage{
     margin-top: 20px;
-    background-color:cornflowerblue;
+    background-color: #DCF8C6;
     border-radius:10px;
     margin-right:auto;
     width:40%;
@@ -104,7 +104,7 @@ margin-right: auto;
 }
 
 .messageContent{
-    margin-top:10px;
+    margin-top:5px;
 }
 
 .time{

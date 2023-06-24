@@ -1,8 +1,14 @@
 import {styled} from 'styled-components';
 export const StyledSpaceInfo = styled.div`
+margin: 4%;
+
+h1, h3{
+    text-decoration: underline;
+}
+
 .button{
-    margin:5px;
-    background-color:green;
+    
+    background-color:#159947;
     color:white;
     padding: 10px 15px 10px 15px;
     border:none;
@@ -13,7 +19,7 @@ export const StyledSpaceInfo = styled.div`
     cursor:pointer;
 }
 .activequiz{
-    margin:4%;
+    
     display:flex;
     flex-direction:horizontal;
     column-gap:20px;
@@ -24,6 +30,14 @@ export const StyledSpaceInfo = styled.div`
     border-radius:5px;
     padding :20px;
     background-color:#23395d;
+    border-radius: 15px;
+}
+.quizcard button{
+    margin: 5px;
+}
+
+.quizcard h4{
+    text-decoration: underline;
 }
 
 `

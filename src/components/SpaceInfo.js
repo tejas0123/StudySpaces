@@ -28,9 +28,9 @@ const SpaceInfo = () => {
     <Navbar />
     <StyledSpaceInfo>
       <div >
-        <Link className='button' to={"/quiz?id="+id}>Create Quiz</Link>
+        <Link className='button' to={"/quiz?id="+id} style={{"text-decoration":"none"}}>Create Quiz</Link>
         <h1>{space.name}</h1>
-                    <h3>Quiz</h3>
+                    <h3>Created Quizzes</h3>
                 <div className='activequiz'>
                         {quiz.map((quiz, ind) => {
                             return (

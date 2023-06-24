@@ -76,7 +76,9 @@ export default function Quiz() {
     <div>
         <Navbar/>
         <StyledQuizPage>
+          <h2 style={{"text-align":"center"}}>New Quiz</h2>
       { 
+      
         questions.map((question,ind)=>{
             return (
                 <>
@@ -106,9 +108,9 @@ export default function Quiz() {
         }) }
         <br/>
         <div className='quiz-btn'>
-          <input type="text" value={quizname} className='quiz-opn' placeholder='Enter Quiz Topic' onChange={(e)=>SetQuizName(e)}/>
-        <button className='button' style={{"background-color": "green" }} onClick={Addquestion}>Add question</button>
-        <input className='button' style={{"background-color": "green" }} type="date" value={date} onChange={(e)=>setDate(e)}></input>
+          <input type="text" value={quizname}  placeholder='Enter Quiz Topic' style={{"width": "25%", "height": "35px", "border": "1px solid silver"}} onChange={(e)=>SetQuizName(e)}/>
+        <button className='button' style={{"background-color": "#159947" }} onClick={Addquestion}>+Add question</button>
+        <input className='button' style={{"background-color": "#159947" }} type="date" value={date} onChange={(e)=>setDate(e)}></input>
      <button className='button' onClick={Submit}>Submit</button>
      </div>
      </StyledQuizPage>

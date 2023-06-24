@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 export const StyledSpace = styled.div`
 font-family: 'Poppins';
+margin: 3%;
 .button{
     margin:5px;
     background-color:#159947;
@@ -13,6 +14,7 @@ font-family: 'Poppins';
 .button:hover{
     cursor:pointer;
 }
+
 
 .formdiv{
     width:50%;
@@ -81,6 +83,7 @@ h2{
     padding :10px;
     margin-left:auto;
     margin-right:auto;
+    text-decoration: underline;
 }
 
 .container {

@@ -273,23 +273,7 @@ function Spaces() {
           >
             Join
           </button>
-          <button className="button">
-            <a
-              href="#createdspaces"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Created Spaces
-            </a>
-          </button>
-          <button className="button">
-            <a
-              href="#joinedspaces"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Joined Spaces
-            </a>
-          </button>
-
+          
           <h2 id="createdspaces">Created Spaces</h2>
           <div className="container">
             {createdSpace.map((item) => {

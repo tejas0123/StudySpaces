@@ -65,7 +65,7 @@ const ViewSpace = () => {
             <StyledViewSpace>
             {(status.length!=0)?<p style={{"marginLeft":"45%","color":"red"}}>{status}</p>:<></>}
                 <h1>{space.name}</h1>
-                    <h3>Active Quizs</h3>
+                    <h3>Active Quizzes</h3>
                 <div className='activequiz'>
                     
                     {(space.length != 0) ?
