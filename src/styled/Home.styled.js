@@ -11,6 +11,9 @@ border-radius:8px;
 color:white;
 box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
 
+h1{
+    text-decoration: underline;
+}
 .text{
     margin-left:50px;
 }
